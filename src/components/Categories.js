@@ -1,4 +1,5 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 import { getCategories } from '../services/api';
 
 class Categories extends React.Component {
@@ -15,10 +16,17 @@ class Categories extends React.Component {
 
   render() {
     const { categories } = this.state;
+    const { listProductsByCategory } = this.props;
     return (
       <div>
         { categories.map((category) => (
-          <button type="button" data-testid="category" key={ category.id }>
+          <button
+            type="button"
+            data-testid="category"
+            key={ category.id }
+            id={ category.id }
+            onClick={ listProductsByCategory }
+          >
             { category.name }
           </button>
         ))}
@@ -26,5 +34,7 @@ class Categories extends React.Component {
     );
   }
 }
-
+Categories.propTypes = {
+  listProductsByCategory: Proptypes.func.isRequired,
+};
 export default Categories;
