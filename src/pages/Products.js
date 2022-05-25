@@ -15,20 +15,19 @@ class Products extends React.Component {
     try {
       const { match: { params: { id } } } = this.props;
       const response = await getProductDetails(id);
-      console.log(typeof response.results, response.results);
       this.setState({
         productDetails: response,
       });
-      console.log(typeof response, response);
     } catch (error) {
       console.log(error.message);
     }
   }
 
   render() {
+    const { match: { params: { id } } } = this.props;
     const { productDetails } = this.state;
     const { attributes } = productDetails;
-    console.log(productDetails.attributes);
+    const { addProductToCart } = this.props;
     return (
       <div className="product-display">
         <Link
@@ -46,9 +45,16 @@ class Products extends React.Component {
         <img src={ productDetails.thumbnail } alt={ productDetails.title } />
         <h3>
           Preço:
-          {' '}
           { productDetails.price}
         </h3>
+        <button
+          data-testid="product-detail-add-to-cart"
+          type="button"
+          onClick={ addProductToCart }
+          id={ id }
+        >
+          Adicionar ao Carrinho
+        </button>
         <div>
           {
             attributes.map((attribute, index) => (
@@ -69,7 +75,7 @@ Products.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-
+  addProductToCart: PropTypes.func.isRequired,
 };
 
 export default Products;
