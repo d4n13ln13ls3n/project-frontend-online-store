@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Categories from '../components/Categories';
 import { getProductsFromCategoryAndQuery, getProductsByCategory } from '../services/api';
 import ProductCard from '../components/ProductCard';
@@ -36,6 +37,7 @@ class ProductList extends React.Component {
 
   render() {
     const { productName, productList, firstEnter } = this.state;
+    const { addToCartButton } = this.props;
     const firstEnterSpan = (
       <span
         data-testid="home-initial-message"
@@ -60,8 +62,17 @@ class ProductList extends React.Component {
               alt={ product.title }
               title={ product.title }
               price={ product.price }
+              addToCartButton={ addToCartButton }
             />
           </Link>
+          <button
+            data-testid="product-add-to-cart"
+            type="button"
+            onClick={ addToCartButton }
+            id={ product.id }
+          >
+            Adicionar ao Carrinho
+          </button>
         </div>
       ))
     );
@@ -107,5 +118,9 @@ class ProductList extends React.Component {
     );
   }
 }
+
+ProductList.propTypes = {
+  addToCartButton: PropTypes.func.isRequired,
+};
 
 export default ProductList;
