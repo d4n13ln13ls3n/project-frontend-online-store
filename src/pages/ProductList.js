@@ -66,7 +66,7 @@ class ProductList extends React.Component {
             />
           </Link>
           <button
-            data-testid="product-detail-add-to-cart"
+            data-testid="product-add-to-cart"
             type="button"
             onClick={ addToCartButton }
             id={ product.id }

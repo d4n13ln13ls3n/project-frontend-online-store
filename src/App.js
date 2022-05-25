@@ -16,10 +16,10 @@ class App extends React.Component {
       const verifyExistent = estadoAnterior.cart.some((product) => product.id === id);
       if (!verifyExistent) {
         return {
-          cart: estadoAnterior.cart.push({
-            quantity: 0,
+          cart: [...estadoAnterior.cart, {
+            quantity: 1,
             id,
-          }),
+          }],
         };
       }
       return { cart: estadoAnterior.cart.map((product) => {
