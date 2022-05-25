@@ -17,7 +17,7 @@ class ProductCard extends React.Component {
 ProductCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default ProductCard;

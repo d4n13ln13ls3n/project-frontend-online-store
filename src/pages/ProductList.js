@@ -45,21 +45,24 @@ class ProductList extends React.Component {
     );
     const productsCards = (
       productList.map((product) => (
-        <Link
-          data-testid="product-detail-link"
+        <div
+          data-testid="product"
           key={ product.id }
-          to={ `/product/${product.id}` }
-          details={ product }
         >
-          <ProductCard
-            key={ product.id }
-            data-testid="product"
-            image={ product.thumbnail }
-            alt={ product.title }
-            title={ product.title }
-            price={ product.price }
-          />
-        </Link>
+          <Link
+            data-testid="product-detail-link"
+            to={ `/product/${product.id}` }
+            details={ product }
+          >
+            <ProductCard
+              key={ product.id }
+              image={ product.thumbnail }
+              alt={ product.title }
+              title={ product.title }
+              price={ product.price }
+            />
+          </Link>
+        </div>
       ))
     );
     const searchMessage = firstEnter ? firstEnterSpan : (
