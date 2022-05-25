@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getProductsFromCategoryAndQuery, getProductsByCategory } from '../services/api';
 
 class ProductList extends React.Component {
   state = {
@@ -18,6 +18,14 @@ class ProductList extends React.Component {
   handleClick = async () => {
     const { productName } = this.state;
     const response = await getProductsFromCategoryAndQuery('$CATEGORY_ID', productName);
+    this.setState({
+      productList: response.results,
+      firstEnter: false,
+    });
+  }
+
+  listProductsByCategory = async ({ target: { id } }) => {
+    const response = await getProductsByCategory(id);
     this.setState({
       productList: response.results,
       firstEnter: false,
@@ -52,7 +60,9 @@ class ProductList extends React.Component {
     return (
       <main>
         <aside>
-          <Categories />
+          <Categories
+            listProductsByCategory={ this.listProductsByCategory }
+          />
         </aside>
         <div>
           <input
