@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { getCategories } from '../services/api';
+import './Categories.css';
 
 class Categories extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class Categories extends React.Component {
     const { categories } = this.state;
     const { listProductsByCategory } = this.props;
     return (
-      <div>
+      <div className="categories-container">
         { categories.map((category) => (
           <button
             type="button"

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
 import { getProductsFromCategoryAndQuery, getProductsByCategory } from '../services/api';
+import ProductCard from '../components/ProductCard';
+import '../components/ProductList.css';
 
 class ProductList extends React.Component {
   state = {
@@ -43,14 +45,22 @@ class ProductList extends React.Component {
     );
     const productsCards = (
       productList.map((product) => (
-        <div
+        <Link
+          data-testid="product-detail-link"
           key={ product.id }
-          data-testid="product"
+          to={ `/product/${product.id}` }
+          details={ product }
         >
-          <img width="300px" src={ product.thumbnail } alt={ product.title } />
-          <h2>{ product.title }</h2>
-          <p>{ product.price }</p>
-        </div>))
+          <ProductCard
+            key={ product.id }
+            data-testid="product"
+            image={ product.thumbnail }
+            alt={ product.title }
+            title={ product.title }
+            price={ product.price }
+          />
+        </Link>
+      ))
     );
     const searchMessage = firstEnter ? firstEnterSpan : (
       <span>
