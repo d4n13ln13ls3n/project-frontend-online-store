@@ -1,0 +1,16 @@
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 10rem;
+}
+
+.categories-container button {
+  background-color: rgba(240, 240, 240, 0.726);
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.categories-container button:hover {
+  background-color: white;
+}
