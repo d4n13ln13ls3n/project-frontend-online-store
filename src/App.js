@@ -14,9 +14,10 @@ class App extends React.Component {
     const { id } = target;
     this.setState((estadoAnterior) => {
       const verifyExistent = estadoAnterior.cart.some((product) => product.id === id);
+      console.log('estadoAnterior.cart', estadoAnterior.cart);
       if (!verifyExistent) {
         return {
-          cart: [...estadoAnterior.cart, {
+          cart: [...estadoAnterior.cart, { // não está mantendo sequencia do estado anterior
             quantity: 1,
             id,
           }],
