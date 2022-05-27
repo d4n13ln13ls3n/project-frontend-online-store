@@ -62,13 +62,13 @@ class ProductList extends React.Component {
               alt={ product.title }
               title={ product.title }
               price={ product.price }
-              addToCartButton={ addToCartButton }
+              addToCartButton={ () => addToCartButton(product) }
             />
           </Link>
           <button
             data-testid="product-add-to-cart"
             type="button"
-            onClick={ addToCartButton }
+            onClick={ () => addToCartButton(product) }
             id={ product.id }
           >
             Adicionar ao Carrinho
