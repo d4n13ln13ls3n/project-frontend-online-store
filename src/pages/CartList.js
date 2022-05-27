@@ -63,8 +63,7 @@ class CartList extends React.Component {
     const productObject = cartItems.find((item) => item.product.id === id);
     if (productObject.quantity === 1) {
       this.setState((estadoAnterior) => ({
-        cartItems: estadoAnterior.cartItems
-          .filter((cartItem) => cartItem.product.id !== id),
+        cartItems: estadoAnterior.cartItems,
       }));
     } else {
       this.setState((estadoAnterior) => ({
