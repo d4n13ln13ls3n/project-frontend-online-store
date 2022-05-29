@@ -1,0 +1,13 @@
+.product-navbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-attributes {
+  display: flex;
+
+}
+
+.comment-section {
+  background-color: lightgrey;
+}
