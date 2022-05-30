@@ -10,32 +10,35 @@ class App extends React.Component {
     cart: [],
   }
 
-  addToCartButton = ({ target }) => {
-    const { id } = target;
-    this.setState((estadoAnterior) => {
-      const verifyExistent = estadoAnterior.cart.some((product) => product.id === id);
-      if (!verifyExistent) {
-        return {
-          cart: [...estadoAnterior.cart, {
-            quantity: 1,
-            id,
-          }],
-        };
-      }
-      return { cart: estadoAnterior.cart.map((product) => {
-        if (product.id === id) {
-          return {
-            quantity: product.quantity + 1,
-            id: product.id,
-          };
-        } return product;
-      }),
-      };
-    });
+  addToCartButton = (product) => {
+    const { id } = product;
+    const { cart } = this.state;
+    const cartItem = cart.find((p) => p.id === id);
+    if (!cartItem) {
+      this.setState((estadoAnterior) => ({
+        cart: [...estadoAnterior.cart, { // não está mantendo sequencia do estado anterior
+          quantity: 1,
+          product,
+        }],
+      }));
+    } else {
+      this.setState((estadoAnterior) => ({
+        cart: estadoAnterior.cart.map((item) => {
+          if (item.id === id) {
+            return {
+              quantity: item.quantity + 1,
+              product: item,
+            };
+          }
+          return item;
+        }),
+      }));
+    }
   };
 
   render() {
     const { cart } = this.state;
+    // console.log(cart);
     return (
       <div className="App">
         <BrowserRouter>
@@ -59,3 +62,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+// save the whole product in the cart, not just the id
