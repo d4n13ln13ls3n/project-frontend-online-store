@@ -11,35 +11,6 @@ class CartList extends React.Component {
     this.setState({
       cartItems: cart,
     });
-    // for (let i = 0; i < cart.length; i += 1) {
-    //   const response = await getProductDetails(cart[i].id);
-    //   this.setState((estadoAnterior) => ({
-    //     cartItems: [...estadoAnterior.cartItems, {
-    //       product: response,
-    //       quantity: cart[i].quantity,
-    //     }],
-    //   }));
-    // }
-    // cart.forEach((product) => {
-    //   const response = getProductDetails(product.id);
-    //   this.setState((estadoAnterior) => ({
-    //     cartItems: [...estadoAnterior.cartItems, {
-    //       product: response,
-    //       quantity: product.quantity,
-    //     }],
-    //   }));
-    // });
-  //   const cartItems = await Promise.all(
-  //     cart.map(async (item) => {
-  //       const product = await getProductDetails(item.id);
-  //       return {
-  //         product,
-  //         quantity: item.quantity };
-  //     }),
-  //   );
-  //   this.setState({
-  //     cartItems,
-  //   });
   }
 
   increaseQuantity = ({ target }) => {
@@ -78,7 +49,6 @@ class CartList extends React.Component {
 
   render() {
     const { cartItems } = this.state;
-    // console.log('cart:', cartItems);
     const emptyCart = (
       <p
         data-testid="shopping-cart-empty-message"
