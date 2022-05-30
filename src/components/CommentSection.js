@@ -2,89 +2,133 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class CommentSection extends React.Component {
+  state = {
+    commentEmail: '',
+    evalDetails: '',
+    rating: '',
+  };
+
+  handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { saveComments, productId } = this.props;
+    const { commentEmail, evalDetails, rating } = this.state;
+    this.setState({
+      commentEmail: '',
+      evalDetails: '',
+      rating: '',
+    });
+
+    saveComments({ productId, commentEmail, rating, evalDetails });
+  }
+
   render() {
-    const { saveComments, saveCommentEmail, handleTextAreaCommentChanges } = this.props;
+    const { commentEmail, evalDetails } = this.state;
     return (
       <div>
         <h2>Avaliações:</h2>
-        <form className="form-comment-section">
-          <label htmlFor="emailInput">
+        <form
+          className="form-comment-section"
+          onSubmit={ this.handleSubmit }
+        >
+          <label htmlFor="commentEmail">
             <input
               required
               data-testid="product-detail-email"
               type="email"
               className="form-email"
               placeholder="E-mail"
-              name="emailInput"
-              onChange={ saveCommentEmail }
+              name="commentEmail"
+              value={ commentEmail }
+              onChange={ this.handleChange }
             />
           </label>
-          <div
-            className="star-rating"
-          >
-            <i
-              data-testid="1-rating"
-              className="material-icons"
-              style={ {
-                'font-size': '1.5rem', color: 'grey',
-              } }
+          <div className="rating-radio">
+            <label
+              htmlFor="rating"
             >
-              star
+              <input
+                type="radio"
+                name="rating"
+                value="1"
+                data-testid="1-rating"
+                onChange={ this.handleChange }
+              />
 
-            </i>
-            <i
-              data-testid="2-rating"
-              className="material-icons"
-              style={ {
-                'font-size': '1.5rem', color: 'grey',
-              } }
+              1
+            </label>
+            <label
+              htmlFor="rating"
             >
-              star
+              <input
+                type="radio"
+                name="rating"
+                value="2"
+                data-testid="2-rating"
+                onChange={ this.handleChange }
+              />
 
-            </i>
-            <i
-              data-testid="3-rating"
-              className="material-icons"
-              style={ {
-                'font-size': '1.5rem', color: 'grey',
-              } }
+              2
+            </label>
+            <label
+              htmlFor="rating"
             >
-              star
+              <input
+                type="radio"
+                name="rating"
+                value="3"
+                data-testid="3-rating"
+                onChange={ this.handleChange }
+              />
 
-            </i>
-            <i
-              data-testid="4-rating"
-              className="material-icons"
-              style={ {
-                'font-size': '1.5rem', color: 'grey',
-              } }
+              3
+            </label>
+            <label
+              htmlFor="rating"
             >
-              star
+              <input
+                type="radio"
+                name="rating"
+                value="4"
+                data-testid="4-rating"
+                onChange={ this.handleChange }
+              />
 
-            </i>
-            <i
-              data-testid="5-rating"
-              className="material-icons"
-              style={ {
-                'font-size': '1.5rem', color: 'grey',
-              } }
+              4
+            </label>
+            <label
+              htmlFor="rating"
             >
-              star
+              <input
+                type="radio"
+                name="rating"
+                value="5"
+                data-testid="5-rating"
+                onChange={ this.handleChange }
+              />
 
-            </i>
+              5
+            </label>
           </div>
-          <label htmlFor="textAreaInput">
+
+          <label htmlFor="evalDetails">
             <textarea
               data-testid="product-detail-evaluation"
               className="form-textarea"
               placeholder="Deixe aqui o seu comentário."
               maxLength={ 400 }
-              name="textareaInput"
-              onChange={ handleTextAreaCommentChanges }
+              name="evalDetails"
+              value={ evalDetails }
+              onChange={ this.handleChange }
             />
           </label>
           <button
-            onClick={ saveComments }
             data-testid="submit-review-btn"
             type="submit"
           >
@@ -97,9 +141,8 @@ class CommentSection extends React.Component {
 }
 
 CommentSection.propTypes = {
-  saveCommentEmail: PropTypes.func.isRequired,
-  handleTextAreaCommentChanges: PropTypes.func.isRequired,
   saveComments: PropTypes.func.isRequired,
+  productId: PropTypes.string.isRequired,
 };
 
 export default CommentSection;

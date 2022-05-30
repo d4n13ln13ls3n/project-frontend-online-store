@@ -3,53 +3,50 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProductDetails } from '../services/api';
 import CommentSection from '../components/CommentSection';
-import PreviousComments from '../components/PreviousComments';
 import '../components/styles/Product.css';
 
 class Products extends React.Component {
-  state = {
-    productDetails: {
-      attributes: [],
-    },
-    // commentObj: {
-    //   comments: [],
-    //   email: '',
-    //   rating: 0,
-    //   evaluationDetails: '',
-    // },
+  constructor(props) {
+    super(props);
+    const locStorage = JSON.parse(localStorage.getItem('productEval')) || [];
+    this.state = {
+      productDetails: {
+        attributes: [],
+      },
+      productId: '',
+      comments: locStorage,
+    };
   }
 
   async componentDidMount() {
-    try {
-      const { match: { params: { id } } } = this.props;
-      const response = await getProductDetails(id);
-      this.setState({
-        productDetails: response,
-      });
-      console.log(response.id);
-    } catch (error) {
-      console.log(error.message);
-    }
+    // this.setState({
+    //   comments: locStorage,
+    // }
+    // )
+    const { match: { params: { id } } } = this.props;
+    const response = await getProductDetails(id);
+    this.setState({
+      productDetails: response,
+      productId: id,
+    });
+    console.log(this.state);
   }
 
-  saveComments = ({ target }) => {
-    console.log(target.name);
+  saveComments = (comment) => {
+    const locStorage = JSON.parse(localStorage.getItem('productEval')) || [];
+    locStorage.push(comment);
+    localStorage.setItem('productEval', JSON.stringify(locStorage));
+    this.setState((estadoAnterior) => ({
+      comments: [...estadoAnterior.comments, comment],
+    }));
   };
-
-  saveCommentEmail = ({ target }) => {
-    console.log(target.value);
-  }
-
-  handleTextAreaCommentChanges = ({ target }) => {
-    console.log(target.value);
-  }
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { productDetails } = this.state;
+    const { productDetails, productId, comments } = this.state;
     const { attributes } = productDetails;
-    const { addProductToCart, saveComments, PreviousCommentSections } = this.props;
-
+    const { addProductToCart } = this.props;
+    console.log(this.state, 'state');
     return (
       <div className="product-display">
         <navbar className="product-navbar">
@@ -94,15 +91,33 @@ class Products extends React.Component {
         </div>
         <div className="comment-section">
           <CommentSection
-            saveCommentEmail={ this.saveCommentEmail }
-            handleTextAreaCommentChanges={ this.handleTextAreaCommentChanges }
+            productId={ productId }
             saveComments={ this.saveComments }
           />
-          {
-            <PreviousCommentSections /> ? <PreviousComments /> : <h3>Deixe a primeira avaliação do produto!</h3>
-          }
+          <div>
+            {
+              comments.filter((element) => (element.productId === id))
+                .map((comment, index) => (
+                  <div key={ index }>
+                    <p>
+                      {comment.commentEmail}
+
+                    </p>
+                    <p>{`Nota: ${comment.rating}`}</p>
+                    {console.log('funcionando?')}
+                    <p>
+                      {comment.evalDetails}
+
+                    </p>
+                  </div>
+                ))
+            }
+
+          </div>
+
         </div>
       </div>
+
     );
   }
 }
