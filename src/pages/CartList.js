@@ -1,54 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+// import Checkout from './Checkout';
 
 class CartList extends React.Component {
-  state = {
-    cartItems: [],
-  }
-
-  async componentDidMount() {
-    const { cart } = this.props;
-    this.setState({
-      cartItems: cart,
-    });
-  }
-
-  increaseQuantity = ({ target }) => {
-    const { id } = target;
-    this.setState((estadoAnterior) => ({
-      cartItems: estadoAnterior.cartItems.map((product) => {
-        if (product.product.id === id) {
-          return {
-            quantity: product.quantity + 1,
-            product: product.product,
-          };
-        }
-        return product;
-      }),
-    }));
-  }
-
-  decreaseQuantity = ({ target }) => {
-    const { id } = target;
-    const { cartItems } = this.state;
-    const productObject = cartItems.find((item) => item.product.id === id);
-    if (productObject.quantity !== 1) {
-      this.setState((estadoAnterior) => ({
-        cartItems: estadoAnterior.cartItems.map((product) => {
-          if (product.product.id === id) {
-            return {
-              quantity: product.quantity - 1,
-              product: product.product,
-            };
-          }
-          return product;
-        }),
-      }));
-    }
-  }
-
   render() {
-    const { cartItems } = this.state;
+    const { increaseQuantity, decreaseQuantity, cart } = this.props;
+    // console.log('cart:', cartItems);
     const emptyCart = (
       <p
         data-testid="shopping-cart-empty-message"
@@ -60,7 +18,7 @@ class CartList extends React.Component {
     const cartComponent = (
       <div>
         {
-          cartItems.map((cartItem) => (
+          cart.map((cartItem) => (
             <div key={ cartItem.product.id }>
               <button type="button">
                 X
@@ -75,7 +33,7 @@ class CartList extends React.Component {
                 type="button"
                 data-testid="product-decrease-quantity"
                 id={ cartItem.product.id }
-                onClick={ this.decreaseQuantity }
+                onClick={ decreaseQuantity }
               >
                 -
               </button>
@@ -88,7 +46,7 @@ class CartList extends React.Component {
                 type="button"
                 id={ cartItem.product.id }
                 data-testid="product-increase-quantity"
-                onClick={ this.increaseQuantity }
+                onClick={ increaseQuantity }
               >
                 +
               </button>
@@ -98,16 +56,22 @@ class CartList extends React.Component {
         <h3>
           {
             `Você tem
-            ${cartItems.reduce((acc, current) => acc + current.quantity, 0)}
+            ${cart.reduce((acc, current) => acc + current.quantity, 0)}
             itens no seu carrinho`
           }
         </h3>
+        <Link
+          to="/checkout"
+          data-testid="checkout-products"
+        >
+          Ir para a página de pagamento
+        </Link>
       </div>
     );
     return (
       <div>
         <h1>shopping cart</h1>
-        { cartItems.length === 0 ? emptyCart : cartComponent }
+        { cart.length === 0 ? emptyCart : cartComponent }
       </div>
     );
   }
@@ -115,6 +79,8 @@ class CartList extends React.Component {
 
 CartList.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  increaseQuantity: PropTypes.func.isRequired,
+  decreaseQuantity: PropTypes.func.isRequired,
 };
 
 export default CartList;

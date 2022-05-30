@@ -4,6 +4,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import ProductList from './pages/ProductList';
 import CartList from './pages/CartList';
 import Products from './pages/Products';
+import Checkout from './pages/Checkout';
 
 class App extends React.Component {
   state = {
@@ -36,6 +37,40 @@ class App extends React.Component {
     }
   };
 
+  increaseQuantity = ({ target }) => {
+    const { id } = target;
+    this.setState((estadoAnterior) => ({
+      cart: estadoAnterior.cart.map((product) => {
+        if (product.product.id === id) {
+          return {
+            quantity: product.quantity + 1,
+            product: product.product,
+          };
+        }
+        return product;
+      }),
+    }));
+  }
+
+  decreaseQuantity = ({ target }) => {
+    const { id } = target;
+    const { cart } = this.state;
+    const productObject = cart.find((item) => item.product.id === id);
+    if (productObject.quantity !== 1) {
+      this.setState((estadoAnterior) => ({
+        cart: estadoAnterior.cart.map((product) => {
+          if (product.product.id === id) {
+            return {
+              quantity: product.quantity - 1,
+              product: product.product,
+            };
+          }
+          return product;
+        }),
+      }));
+    }
+  }
+
   render() {
     const { cart } = this.state;
     // console.log(cart);
@@ -54,7 +89,15 @@ class App extends React.Component {
               addProductToCart={ this.addToCartButton }
             />) }
           />
-          <Route path="/cart-list" render={ () => <CartList cart={ cart } /> } />
+          <Route
+            path="/cart-list"
+            render={ () => (<CartList
+              cart={ cart }
+              increaseQuantity={ this.increaseQuantity }
+              decreaseQuantity={ this.decreaseQuantity }
+            />) }
+          />
+          <Route path="/checkout" render={ () => <Checkout cart={ cart } /> } />
         </BrowserRouter>
       </div>
     );
