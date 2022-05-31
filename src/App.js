@@ -11,45 +11,58 @@ class App extends React.Component {
     cart: [],
   }
 
+  componentDidMount() {
+    const cartStorage = JSON.parse(localStorage.getItem('cartStorage')) || [];
+    this.setState({
+      cart: cartStorage,
+    });
+  }
+
   addToCartButton = (product) => {
     const { id } = product;
     const { cart } = this.state;
-    const cartItem = cart.find((p) => p.id === id);
+    const cartItem = cart.find((p) => p.product.id === id);
     if (!cartItem) {
+      const cartStorage = JSON.parse(localStorage.getItem('cartStorage')) || [];
+      cartStorage.push({
+        quantity: 1,
+        product,
+      });
+      localStorage.setItem('cartStorage', JSON.stringify(cartStorage));
       this.setState((estadoAnterior) => ({
-        cart: [...estadoAnterior.cart, { // não está mantendo sequencia do estado anterior
+        cart: [...estadoAnterior.cart, {
           quantity: 1,
           product,
         }],
       }));
     } else {
-      this.setState((estadoAnterior) => ({
-        cart: estadoAnterior.cart.map((item) => {
-          if (item.id === id) {
-            return {
-              quantity: item.quantity + 1,
-              product: item,
-            };
-          }
-          return item;
-        }),
-      }));
+      const cartStorage = JSON.parse(localStorage.getItem('cartStorage')) || [];
+      const updatedCart = cartStorage.map((item) => this.updatesCart(item, id));
+      localStorage.setItem('cartStorage', JSON.stringify(updatedCart));
+      this.setState({
+        cart: updatedCart,
+      });
     }
   };
 
+  updatesCart = (item, id) => {
+    if (item.product.id === id) {
+      return {
+        quantity: item.quantity + 1,
+        product: item.product,
+      };
+    }
+    return item;
+  }
+
   increaseQuantity = ({ target }) => {
     const { id } = target;
-    this.setState((estadoAnterior) => ({
-      cart: estadoAnterior.cart.map((product) => {
-        if (product.product.id === id) {
-          return {
-            quantity: product.quantity + 1,
-            product: product.product,
-          };
-        }
-        return product;
-      }),
-    }));
+    const cartStorage = JSON.parse(localStorage.getItem('cartStorage')) || [];
+    const updatedCart = cartStorage.map((item) => this.updatesCart(item, id));
+    localStorage.setItem('cartStorage', JSON.stringify(updatedCart));
+    this.setState({
+      cart: updatedCart,
+    });
   }
 
   decreaseQuantity = ({ target }) => {
@@ -57,17 +70,20 @@ class App extends React.Component {
     const { cart } = this.state;
     const productObject = cart.find((item) => item.product.id === id);
     if (productObject.quantity !== 1) {
-      this.setState((estadoAnterior) => ({
-        cart: estadoAnterior.cart.map((product) => {
-          if (product.product.id === id) {
-            return {
-              quantity: product.quantity - 1,
-              product: product.product,
-            };
-          }
-          return product;
-        }),
-      }));
+      const cartStorage = JSON.parse(localStorage.getItem('cartStorage')) || [];
+      const updatedCart = cartStorage.map((item) => {
+        if (item.product.id === id) {
+          return {
+            quantity: item.quantity - 1,
+            product: item.product,
+          };
+        }
+        return item;
+      });
+      localStorage.setItem('cartStorage', JSON.stringify(updatedCart));
+      this.setState({
+        cart: updatedCart,
+      });
     }
   }
 
@@ -80,13 +96,17 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={ () => <ProductList addToCartButton={ this.addToCartButton } /> }
+            render={ () => (<ProductList
+              addToCartButton={ this.addToCartButton }
+              cart={ cart }
+            />) }
           />
           <Route
             path="/product/:id"
             render={ (id) => (<Products
               { ...id }
               addProductToCart={ this.addToCartButton }
+              cart={ cart }
             />) }
           />
           <Route

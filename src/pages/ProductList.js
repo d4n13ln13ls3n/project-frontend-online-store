@@ -37,7 +37,7 @@ class ProductList extends React.Component {
 
   render() {
     const { productName, productList, firstEnter } = this.state;
-    const { addToCartButton } = this.props;
+    const { addToCartButton, cart } = this.props;
     const firstEnterSpan = (
       <span
         data-testid="home-initial-message"
@@ -107,7 +107,19 @@ class ProductList extends React.Component {
             to="/cart-list"
             data-testid="shopping-cart-button"
           >
-            Carrinho
+            <i
+              className="material-icons"
+              style={ { fontSize: '45px', color: 'black' } }
+            >
+              shopping_cart
+
+            </i>
+            <span
+              data-testid="shopping-cart-size"
+            >
+              {cart.reduce((acc, current) => acc + current.quantity, 0)}
+
+            </span>
           </Link>
         </div>
         {
@@ -121,6 +133,7 @@ class ProductList extends React.Component {
 
 ProductList.propTypes = {
   addToCartButton: PropTypes.func.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 export default ProductList;
