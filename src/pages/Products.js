@@ -19,17 +19,12 @@ class Products extends React.Component {
   }
 
   async componentDidMount() {
-    // this.setState({
-    //   comments: locStorage,
-    // }
-    // )
     const { match: { params: { id } } } = this.props;
     const response = await getProductDetails(id);
     this.setState({
       productDetails: response,
       productId: id,
     });
-    console.log(this.state);
   }
 
   saveComments = (comment) => {
@@ -45,7 +40,7 @@ class Products extends React.Component {
     const { match: { params: { id } } } = this.props;
     const { productDetails, productId, comments } = this.state;
     const { attributes } = productDetails;
-    const { addProductToCart } = this.props;
+    const { addProductToCart, cart } = this.props;
     console.log(this.state, 'state');
     return (
       <div className="product-display">
@@ -59,7 +54,19 @@ class Products extends React.Component {
             to="/cart-list"
             data-testid="shopping-cart-button"
           >
-            Carrinho
+            <i
+              className="material-icons"
+              style={ { fontSize: '45px', color: 'black' } }
+            >
+              shopping_cart
+
+            </i>
+            <span
+              data-testid="shopping-cart-size"
+            >
+              {cart.reduce((acc, current) => acc + current.quantity, 0)}
+
+            </span>
           </Link>
         </navbar>
         <h1 data-testid="product-detail-name">{productDetails.title}</h1>
@@ -128,6 +135,7 @@ Products.propTypes = {
     }).isRequired,
   }).isRequired,
   addProductToCart: PropTypes.func.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Products;
