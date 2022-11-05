@@ -20,6 +20,14 @@
 - [Jest](https://jestjs.io/);
 - [React](https://reactjs.org/)
 </br>
+
+<details>
+  <summary><strong>🛠 Testes</strong></summary><br />
+
+  Neste projeto utilizamos a [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro) para execução dos testes.
+  We used [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro) to run the tests.
+</details>
+
   <details>
   <summary> 🇬🇧 English here</summary>
   </br>In this project, which I did with Marina Catao (github.com/Marinavdac), Luiz Felipe Pereira (github.com/LuizFelipe406) and Ricardo Sbeghen (github.com/RicardoSbeghen), we created a simplified version, without persistence in the database,of an **online store**, developing its functionalities according to requirements defined in a Kanban Board, in a situation trying to replicate the job market. </br>
@@ -30,8 +38,3 @@
   ◉ Conclude the (simulated) purchase of the selected items. </br>
   </ details>
   </br>
-<details>
-  <summary><strong>🛠 Testes</strong></summary><br />
-
-  Neste projeto utilizamos a [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro) para execução dos testes.
-  We used [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro) to run the tests.
