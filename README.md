@@ -1,4 +1,4 @@
-[Captura de tela de 2022-11-05 11-28-58](https://user-images.githubusercontent.com/92753791/200125186-403a778d-da67-408e-a721-fe7fb380c370.png)
+![Captura de tela de 2022-11-05 11-28-58](https://user-images.githubusercontent.com/92753791/200125248-abd879d3-3d20-48d8-9b22-4b65095d76b5.png)
 
 ![Captura de tela de 2022-11-05 11-28-53](https://user-images.githubusercontent.com/92753791/200125202-0ae09ec4-31b0-49d5-9802-37fdbc7c25bb.png)
 
