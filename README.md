@@ -1,3 +1,7 @@
+[Captura de tela de 2022-11-05 11-28-58](https://user-images.githubusercontent.com/92753791/200125186-403a778d-da67-408e-a721-fe7fb380c370.png)
+
+![Captura de tela de 2022-11-05 11-28-53](https://user-images.githubusercontent.com/92753791/200125202-0ae09ec4-31b0-49d5-9802-37fdbc7c25bb.png)
+
   Neste projeto, que fiz em grupo com Marina Catão, Luiz Felipe Pereira e Ricardo Sbaghen, foi criada uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo do mercado de trabalho.
   
   A partir dessas demandas, montamos uma aplicação na qual os usuários poderão:
