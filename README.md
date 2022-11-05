@@ -8,15 +8,18 @@ English below
   - Interagir com os produtos buscados de modo a adicioná-los e removê-los de um carrinho de compras em diferentes quantidades;
   - Visualizar detalhes e avaliações prévias de um produto, bem como criar novas avaliações;
   - E por fim, finalizar a compra (simulada) dos itens selecionados.
-</details>
 
-<details>English
   In this project, which I did with Marina Catao, Luiz Felipe Pereira and Ricardo Sbaghen, we created a simplified version, without persistence in the database,of an **online store**, developing its functionalities according to requirements defined in a Kanban Board, in a situation trying to replicate the job market.
   Meeting those requirements, we put together an application in which users will be able to:
   - Search products by terms and categories through Mercado Livre's API;
   - Interact with the searched items by adding to and removing them from a shopping cart in different quantities;
   - View details and previous ratings of a product, as well as writing new reviews;
   - Conclude the (simulated) purchase of the selected items.
+
+</details>
+
+<details>
+  
 <details>
 <details>
   <summary><strong>🛠 Testes</strong></summary><br />
