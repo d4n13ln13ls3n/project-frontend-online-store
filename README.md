@@ -1,8 +1,8 @@
 ![Captura de tela de 2022-11-05 11-28-53](https://user-images.githubusercontent.com/92753791/200125202-0ae09ec4-31b0-49d5-9802-37fdbc7c25bb.png)
-English below
 
-  Project Front-End Online Store
-  Projeto desenvolvido no módulo de Back-end da [Trybe](https://www.betrybe.com/).
+  ## - Project Front-End Online Store
+  Projeto desenvolvido no módulo de Front-end da [Trybe](https://www.betrybe.com/).
+  English below
   
   ## ✏ Informações sobre o projeto
   O objetivo deste projeto, que fiz em grupo com Marina Catão (github.com/Marinavdac), Luiz Felipe Pereira (github.com/LuizFelipe406) e Ricardo Sbeghen (github.com/RicardoSbeghen), foi criar uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo do mercado de trabalho. </br>
