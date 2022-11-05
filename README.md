@@ -1,13 +1,24 @@
 ![Captura de tela de 2022-11-05 11-28-53](https://user-images.githubusercontent.com/92753791/200125202-0ae09ec4-31b0-49d5-9802-37fdbc7c25bb.png)
 English below
 
-  Neste projeto, que fiz em grupo com Marina Catão (github.com/Marinavdac), Luiz Felipe Pereira (github.com/LuizFelipe406) e Ricardo Sbeghen (github.com/RicardoSbeghen), foi criada uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo do mercado de trabalho. </br>
+  Project Front-End Online Store
+  Projeto desenvolvido no módulo de Back-end da [Trybe](https://www.betrybe.com/).
+  
+  ## ✏ Informações sobre o projeto
+  O objetivo deste projeto, que fiz em grupo com Marina Catão (github.com/Marinavdac), Luiz Felipe Pereira (github.com/LuizFelipe406) e Ricardo Sbeghen (github.com/RicardoSbeghen), foi criar uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo do mercado de trabalho. </br>
   
   A partir dessas demandas, montamos uma aplicação na qual os usuários poderão: </br>
   </br> ◉ Buscar produtos por termos e categorias a partir da _API do Mercado Livre_; </br>
   ◉ Interagir com os produtos buscados de modo a adicioná-los e removê-los de um carrinho de compras em diferentes quantidades; </br>
   ◉ Visualizar detalhes e avaliações prévias de um produto, bem como criar novas avaliações; </br>
   ◉ E por fim, finalizar a compra (simulada) dos itens selecionados. </br>
+
+ ## 🛸 Principais tecnologias utilizadas / Main technologies used: 
+- [CSS]([https://www.docker.com/](https://www.w3.org/Style/CSS/Overview.en.html));
+- [HTML]([https://expressjs.com/](https://html.com/));
+- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript);
+- [Jest]([https://joi.dev/api/?v=17.6.0](https://jestjs.io/));
+- [React](https://reactjs.org/)
 
   <details>
  <summary> 🇬🇧 English here</summary>
