@@ -14,10 +14,10 @@
   ◉ E por fim, finalizar a compra (simulada) dos itens selecionados. </br>
 
  ## 🛸 Principais tecnologias utilizadas / Main technologies used: 
-- [CSS]([https://www.docker.com/](https://www.w3.org/Style/CSS/Overview.en.html));
-- [HTML]([https://expressjs.com/](https://html.com/));
+- [CSS](https://www.w3.org/Style/CSS/Overview.en.html);
+- [HTML](https://html.com/);
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript);
-- [Jest]([https://joi.dev/api/?v=17.6.0](https://jestjs.io/));
+- [Jest](https://jestjs.io/);
 - [React](https://reactjs.org/)
 
   <details>
