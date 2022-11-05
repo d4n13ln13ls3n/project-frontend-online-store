@@ -19,9 +19,9 @@
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript);
 - [Jest](https://jestjs.io/);
 - [React](https://reactjs.org/)
-
+</br>
+<summary> 🇬🇧 English here</summary>
   <details>
- <summary> 🇬🇧 English here</summary>
   </br>In this project, which I did with Marina Catao (github.com/Marinavdac), Luiz Felipe Pereira (github.com/LuizFelipe406) and Ricardo Sbeghen (github.com/RicardoSbeghen), we created a simplified version, without persistence in the database,of an **online store**, developing its functionalities according to requirements defined in a Kanban Board, in a situation trying to replicate the job market. </br>
   </br> Meeting those requirements, we put together an application in which users will be able to: </br>
   </br> ◉ Search products by terms and categories through Mercado Livre's API; </br>
