@@ -5,7 +5,6 @@ import Categories from '../components/Categories';
 import { getProductsFromCategoryAndQuery, getProductsByCategory } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import '../components/ProductList.css';
-import logo from '../components/images/favicon.png';
 
 class ProductList extends React.Component {
   state = {
