@@ -87,7 +87,6 @@ class ProductList extends React.Component {
     return (
       <main>
         <header className="header">
-          <img className="logo-header" src={ logo } alt="logo-icon" />
           <h1 className="header-title">DLMR: FrontEnd Online Store</h1>
           <Link
             className="cart-link"
