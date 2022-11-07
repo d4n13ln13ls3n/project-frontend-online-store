@@ -1,3 +1,52 @@
 main {
   display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+aside {
+  margin-top: 6.5rem;
+  padding: 1rem;
+  position: absolute;
+  width: fit-content;
+}
+
+.container-item {
+  flex-direction: row;
+}
+
+.product-div {
+  justify-content: center;
+  min-height: 4em;
+  width: 15rem;
+}
+
+.product-div a {
+  color: black;
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4rem 0 0 -20rem;
+  position: absolute;
+  width: 70vw;
+}
+
+.aaa-search {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+
+}
+
+.aa-search input {
+  position: absolute;
 }

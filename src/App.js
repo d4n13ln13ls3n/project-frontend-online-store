@@ -89,7 +89,6 @@ class App extends React.Component {
 
   render() {
     const { cart } = this.state;
-    // console.log(cart);
     return (
       <div className="App">
         <BrowserRouter>
@@ -126,4 +125,3 @@ class App extends React.Component {
 
 export default App;
 
-// save the whole product in the cart, not just the id

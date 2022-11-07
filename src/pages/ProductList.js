@@ -5,6 +5,7 @@ import Categories from '../components/Categories';
 import { getProductsFromCategoryAndQuery, getProductsByCategory } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import '../components/ProductList.css';
+import logo from '../components/images/favicon.png';
 
 class ProductList extends React.Component {
   state = {
@@ -48,6 +49,7 @@ class ProductList extends React.Component {
     const productsCards = (
       productList.map((product) => (
         <div
+          className="product-div"
           data-testid="product"
           key={ product.id }
         >
@@ -57,11 +59,13 @@ class ProductList extends React.Component {
             details={ product }
           >
             <ProductCard
+              className="container"
               key={ product.id }
               image={ product.thumbnail }
               alt={ product.title }
               title={ product.title }
               price={ product.price }
+              shipping={ product.shipping.free_shipping }
               addToCartButton={ () => addToCartButton(product) }
             />
           </Link>
@@ -83,49 +87,59 @@ class ProductList extends React.Component {
     );
     return (
       <main>
-        <aside>
-          <Categories
-            listProductsByCategory={ this.listProductsByCategory }
-          />
-        </aside>
-        <div>
-          <input
-            value={ productName }
-            name="productName"
-            type="text"
-            data-testid="query-input"
-            onChange={ this.handleChange }
-          />
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ this.handleClick }
-          >
-            Pesquisar
-          </button>
+        <header className="header">
+          <img className="logo-header" src={ logo } alt="logo-icon" />
+          <h1 className="header-title">DLMR: FrontEnd Online Store</h1>
           <Link
+            className="cart-link"
             to="/cart-list"
             data-testid="shopping-cart-button"
           >
             <i
-              className="material-icons"
-              style={ { fontSize: '45px', color: 'black' } }
+              className="material-icons cartIcon"
             >
               shopping_cart
 
             </i>
             <span
+              className="cart-items-qnt"
               data-testid="shopping-cart-size"
             >
               {cart.reduce((acc, current) => acc + current.quantity, 0)}
 
             </span>
           </Link>
-        </div>
-        {
-          productList.length === 0 ? searchMessage : productsCards
-        }
+        </header>
 
+        <aside>
+          <Categories
+            listProductsByCategory={ this.listProductsByCategory }
+          />
+        </aside>
+        <div className="aaa-search">
+          <div className="search-input">
+            <input
+              value={ productName }
+              name="productName"
+              type="text"
+              data-testid="query-input"
+              onChange={ this.handleChange }
+            />
+            <button
+              type="button"
+              data-testid="query-button"
+              onClick={ this.handleClick }
+            >
+              Pesquisar
+            </button>
+          </div>
+          <div className="product-list">
+
+            {
+              productList.length === 0 ? searchMessage : productsCards
+            }
+          </div>
+        </div>
       </main>
     );
   }

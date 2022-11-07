@@ -5,9 +5,9 @@ class ProductCard extends React.Component {
   render() {
     const { image, title, price } = this.props;
     return (
-      <div>
-        <img width="70px" src={ image } alt={ title } />
-        <h2>{ title }</h2>
+      	<div className="container item">
+        <img src={ image } alt={ title } />
+        <h2 className="container-title">{ title }</h2>
         <p>{ price }</p>
       </div>
     );

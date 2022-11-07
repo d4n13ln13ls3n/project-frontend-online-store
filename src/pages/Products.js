@@ -41,7 +41,6 @@ class Products extends React.Component {
     const { productDetails, productId, comments } = this.state;
     const { attributes } = productDetails;
     const { addProductToCart, cart } = this.props;
-    console.log(this.state, 'state');
     return (
       <div className="product-display">
         <navbar className="product-navbar">
@@ -111,7 +110,6 @@ class Products extends React.Component {
 
                     </p>
                     <p>{`Nota: ${comment.rating}`}</p>
-                    {console.log('funcionando?')}
                     <p>
                       {comment.evalDetails}
 
